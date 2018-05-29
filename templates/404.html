@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Error 404</title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/playcode_min.css'%}">
+	<link rel="icon"  type="image" href="{% static 'imagenes/logo.png'%}">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				{% block logo%}
+				<p><img class="img-logo" src="{% static 'imagenes/logo.png'%}" hspace="50"></p>
+				<ul class="ul-404">
+					<li>
+						<p>Error 404</p>
+					</li>
+				</ul>
+				{% endblock%}
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			{% block head-page%}
+			<div class="head-page">
+			{% endblock %}
+			{% block head-page2 %}
+			</div>
+			{% endblock %}
+			</div>
+
+		</div>
+	</nav>
+	
+	<p class="p-space-404" title="Error 404">
+		<p class="p-404">Error 404</p>
+		<p class="p-404-image"><img class="img-404" src="{% static 'imagenes/error404.png' %}"></p>
+	</p>
+	
+</body>
+</html>
