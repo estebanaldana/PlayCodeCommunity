@@ -1,0 +1,99 @@
+{% extends 'base/structure.html' %}
+{% load staticfiles %}
+{% block maxcdn %}
+	<!--maxcdn-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
+{% block css %}
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+{% endblock %}
+{% block toggle %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script>
+	window.jQuery||document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')
+</script>
+{% endblock %}
+
+{% block logo %}
+<ul class="nav navbar-nav">
+	<li>
+		<a class="a-index" href="{% url 'playcode/index' %}">Inicio</a>
+	</li>
+
+{% if user.is_authenticated %}
+	<li class="dropdown">
+		<a class="a-index" href="{{ user.username }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ user.username }} <span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li class="active"><a class="a-dropdown">Perfil</a></li>
+			<li><a class="a-dropdown" href="{% url 'you_community' %}">Tu comunidad</a></li>
+			<li><a class="a-dropdown" href="{% url 'you_proyect' %}">Tus Proyectos</a></li>
+			<li role="separator" class="divider"></li>
+			<li><a class="a-dropdown" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+		</ul>
+    
+	</li>
+        		
+{% else %}
+	<li><a>Error</a></li>
+{% endif %}
+</ul>
+{% endblock %}
+
+{% block search %}
+{% endblock %}
+{% block head-page%}
+{% endblock %}
+{% block head-page2 %}
+{% endblock %}
+{% block enlproy%} 
+{% endblock %}
+{% block enlcom %}
+{% endblock %}
+{% block sesion %}
+{% endblock %}
+
+
+
+{% block inicio %}
+
+{% if instance %}
+
+<div class="content_perfil">
+	<div class="seccion_dates">
+		<p class="first_dates"> Nombre del Usuario </p>
+		<p class="dates">{{ instance.username }}</p>
+	</div>
+	<div class="seccion_dates">
+		<p class="first_dates"> Nombre </p>
+		<p class="dates">{{ instance.first_name }}</p>
+	</div>
+	<div class="seccion_dates">
+		<p class="first_dates"> Apellidos </p>
+		<p class="dates">{{ instance.last_name }}</p>
+	</div>
+</div>
+<br>
+
+{% else %}
+<div class="div_nov">
+	<p>Error</p>
+</div>
+{% endif %}
+
+<!--Scripts-->
+
+<script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+{% endblock %}
+{% block maxCDNjQuery%}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{% endblock %}
+{% block piepagina %}
+{% endblock %}

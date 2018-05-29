@@ -1,0 +1,135 @@
+{% extends 'base/structure.html'%}
+{% load staticfiles %}
+{% block maxcdn %}
+	<!--maxcdn-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
+{% block css %}
+<!--import materialize.css-->
+<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+<!--import playcode.css-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/playcode_min.css'%}">
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Let browser know website is optimized for mobile-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+{% endblock %}
+{% block toggle %}
+{% endblock %}
+
+{% block logo %}
+<ul class="nav navbar-nav" >
+	<li>
+		<a class="a-index" href="{% url 'playcode/index'%}">Inicio</a>
+	</li>
+	<li>
+		<a class="a-index" href="{% url 'login'%}">Iniciar Sesion</a>
+	</li>
+</ul>
+{% endblock %}
+{% block head-page%}
+{% endblock %}
+{% block head-page2 %}
+{% endblock %}
+{% block enlproy%} 
+{% endblock %}
+{% block enlcom %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block sesion %}
+{% endblock %}
+
+
+{% block inicio %}
+
+<p class="titles-forms"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></p>
+
+<div class="center-contents">
+	<form method="post">
+	{% csrf_token %}
+
+		{% for field in form.visible_fields %}
+			<div class="div-alert">
+			{{ field.errors }}
+			</div>
+		{% endfor %}
+
+		{% if messages %}
+		<div class="div-alert">
+			<ul>
+				{% for message in messages %}
+				<li {% if messages.tags %} class = "{{ message.tags }}" {% endif %}>
+				{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} Importante: {% endif %}	
+				{{ message }}
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+		<div class="row">
+			<div class="input-field col s6">
+				{{ form.username }}
+				<label for="{{ form.username.name }}">{{ form.username.label }}</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				{{ form.first_name }}
+				<label for="{{ form.first_name.name }}">{{ form.first_name.label }}</label>	
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				{{ form.last_name }}
+				<label for="{{ form.last_name.name }}">{{ form.last_name.label }}</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				{{ form.email }}
+				<label for="{{ form.email.name }}">{{ form.email.label }}</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6"> 
+				{{ form.password1 }}
+				<label for="{{ form.password1.name }}">{{ form.password1.label }}</label>
+			</div>	
+		</div>
+
+		<div class="row">
+			<div class="input-field col s6"> 
+				{{ form.password2 }}
+				<label for="{{ form.password2.name }}">{{ form.password2.label }}</label>
+			</div>	
+		</div>
+
+		<div class="row">
+			<div class="input-field col s6">
+				<div class="content-btn-forms">
+					<button class="btn-forms" type="submit">Registrar</button>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</div>
+
+
+<!--Scripts-->
+
+<script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }</script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+{% endblock %}
+
+{% block maxCDNjQuery%}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{% endblock %}

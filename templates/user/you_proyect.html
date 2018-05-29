@@ -1,0 +1,88 @@
+{% extends 'base/structure.html' %}
+{% load staticfiles %}
+{% load to_raw %}
+{% block maxcdn %}
+	<!--maxcdn-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
+
+{% block toggle %}
+{% endblock %}
+
+{% block logo %}
+<ul class="nav navbar-nav">
+	<li>
+		<a class="a-index" href="{% url 'playcode/index' %}">Inicio</a>
+	</li>
+
+{% if user.is_authenticated %}
+	<li class="dropdown">
+		<a class="a-index" href="{{ user.username }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ user.username }} <span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a href="{% url 'profile' %}?pc={{ request.COOKIES.sessionid }}">Perfil</a></li>
+			<li><a class="a-dropdown" href="{% url 'you_community' %}">Tu comunidad</a></li>
+			<li class="active"><a class="a-dropdown" >Tus Proyectos</a></li>
+			<li role="separator" class="divider"></li>
+			<li><a class="a-dropdown" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+		</ul>
+    
+	</li>
+        		
+{% else %}
+	<li><a>Error</a></li>
+{% endif %}
+</ul>
+{% endblock %}
+
+{% block search %}
+{% endblock %}
+{% block head-page%}
+{% endblock %}
+{% block head-page2 %}
+{% endblock %}
+{% block enlproy%} 
+{% endblock %}
+{% block enlcom %}
+{% endblock %}
+{% block sesion %}
+{% endblock %}
+
+
+
+
+
+
+{% block inicio %}
+
+	{% if object_list %}
+		<table>
+		{% for pt in object_list %}
+		{% cycle '<tr>' '' '' '' %}
+		{% if pt.user_id == user.id %}
+			<td>
+				<p class="p-des">{{ pt.title }}</p>
+				{% if pt.image %}
+				<img class="img-pt" src="{{ pt.image|to_raw }}">
+				{% else %}
+				<img class="img-pt" src="{% static 'imagenes/logo.png' %}">
+				{% endif %}
+				<p class="p-des">Fecha del proyecto: {{ pt.timestamp }}</p>
+				<p class="p-des">{{ pt.developer|title }}</p>
+				<a href="{% url 'you_det_proyect' %}?detail&project={{ pt.id|url_to_encode_project }}" class="p-des">Ver Completo</a>
+			</td>
+		{% endif %}
+		{% cycle '' '' '' '</tr>' %}
+		{% endfor %}
+		</table>
+	{% else %}
+	<div class="div_nov">
+		<p>No hay Novedad</p>
+	</div>
+	{% endif %}
+
+{% endblock %}
+
+{% block maxCDNjQuery%}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{% endblock %}
