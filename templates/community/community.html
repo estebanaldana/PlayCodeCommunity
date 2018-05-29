@@ -1,0 +1,123 @@
+<!--Community-->
+
+{% extends 'base/structure.html' %}
+{% load staticfiles %}
+{% load to_raw %}
+{% block maxcdn %}
+	<!--maxcdn-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
+{% block toggle %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script>
+	window.jQuery||document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')
+</script>
+
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" arial-expanded="false">
+	<span class="sr-only">Toggle navigation</span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+</button>
+{% endblock %}
+{% block logo %}
+<a href="{% url 'playcode/index'%}">
+	<img class="img-logo" src="{% static 'imagenes/logo.png'%}" hspace="50">
+</a>
+{% endblock %}
+{% block head-page%}
+{% endblock %}
+{% block head-page2 %}
+{% endblock %}
+{% block search %}
+<form class="navbar-form navbar-left">
+	<form method='GET'>
+		<div class="form-group">
+		{% block size-search %}
+			<input type="text" name="q" class="form-control" placeholder="Search" value="{{ request.GET.q }}" maxlength="30" size="40">
+		{% endblock %}
+		</div>
+		<button type="submit" class="btn btn-default">Search</button>	
+	</form>
+</form>
+{% endblock %}
+{% block enlcom %}
+<li class="active"><a>Comunidad</a></li>
+{% endblock %}
+{% block subir %}
+<li>
+	<a href="{% url 'upload_community' %}">
+		<p class="button-li">
+			<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+		</p>
+	</a>
+</li>
+{% endblock %}
+
+
+
+{% block inicio %}
+
+	{% if object_list %}
+	<table>
+	{% for cm in object_list %}
+	{% cycle '<tr>' '' '' '' %}
+		<td>
+			<p class="p-des">{{ cm.user|title }}</p>
+			{% if cm.image %}
+				<img class="img-pt" src="{{ cm.image|to_raw }}">
+			{% else %}
+				<img class="img-pt" src="{% static 'imagenes/logo.png' %}">
+			{% endif %}
+			<div class="div-com">
+				<p class="p-des">{{ cm.title|truncatechars_html:200 }}</p>
+			</div>
+			<div class="div-com">
+				<p class="p-des">{{ cm.description|truncatechars_html:200 }}</p>
+			</div>
+			<p class="p-des">{{ cm.timestamp }}</p>
+			<a href="{% url 'details_community'%}?detail&community={{ cm.id|url_to_encode_community }}" class="p-des">Ver Completo</a>
+		</td>
+	{% cycle '' '' '' '</tr>' %}
+	{% endfor %}
+	</table>
+	<div class="pagination">
+    	<span class="step-links">
+        {% if object_list.has_previous %}
+        	<ul class="pager">
+				<li class="previous">
+        		    <a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+        		    	previous
+        		    </a>
+				</li>
+        	</ul>
+        {% endif %}
+
+        {% if object_list.has_next %}
+        	<ul class="pager">
+        		<li class="next">
+					<a href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+						next
+					</a>
+				</li>
+        	</ul>
+        		{% endif %}
+    	</span>
+    	<span class="page">
+			{{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+        </span>
+	</div>
+	{% else %}
+	<div class="div_nov">
+		<p>No hay Novedad</p>
+	</div>
+	{% endif %}
+
+{% endblock %}
+
+{% block maxCDNjQuery%}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{% endblock %}

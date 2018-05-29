@@ -1,0 +1,123 @@
+<!--Details Community-->
+
+{% extends 'base/structure.html' %}
+{% load staticfiles %}
+{% load to_raw %}
+{% block maxcdn %}
+  <!--maxcdn-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
+
+{% block stylesfacebook %}
+
+{% endblock %}
+
+{% block logo %}
+<ul class="nav navbar-nav">
+  <li>
+    <a href="{% url 'playcode/index'%}">Inicio</a>
+  </li>
+</ul>
+{% endblock %}
+{% block search %}
+{% endblock %}
+
+{% block facebook %}
+<!--comments-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.9&appId=1162353997226233";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<!--compartir-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.9&appId=1162353997226233";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!--compartir twitter-->
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+  t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+  }(document, "script", "twitter-wjs"));
+</script>
+
+<!--Google +-->
+<script src="https://apis.google.com/js/platform.js" async defer>
+  {lang: 'es-419'}
+</script>
+
+
+{% endblock %}
+
+{% block inicio %}
+{% if instance %}
+<div class="block-content">
+
+  <div class="section-list-novedad">
+		<div class="details">
+			<p class="p-user">{{ instance.user|upper }}</p>
+			{% if instance.image %}
+			<img class="img-dp" src="{{ instance.image|to_raw }}">
+			{% else %}
+			<img class="img-dp" src="{% static 'imagenes/logo.png'%}">
+			{% endif %} 	
+    </div>
+
+	<iframe src="https://www.facebook.com/plugins/share_button.php?href={{request.build_absolute_uri}}&layout=button_count&size=small&mobile_iframe=true&appId=1162353997226233&width=144&height=20" width="90" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"> 
+  </iframe>
+
+	<a href="https://twitter.com/share" class="twitter-share-button" data-text="PlayCode Comunidad {{instance.user}}: " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+	<div class="g-plus" data-action="share" data-href="{{request.build_absolute_uri}}"></div>
+
+	<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+	<script type="IN/Share" data-url="{{request.build_absolute_uri}}" data-counter="right"></script>
+
+	</div>
+	<div class="section-list-novedad">
+		<div class="details">
+    <p class="p-user">{{ instance.title }}</p>
+		<p class="p-description">{{ instance.description }}</p>
+		</div>
+	</div>
+</div>
+
+<div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="3"></div>
+{% else %}
+<div class="div_nov">
+  <p>Error</p>
+</div>
+{% endif %}
+
+<div class="space">
+</div>
+{% endblock %}
+
+{% block maxCDNjQuery%}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{% endblock %}

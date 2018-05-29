@@ -1,0 +1,116 @@
+<!--Add Community-->
+
+{% extends 'base/structure.html' %}
+{% load staticfiles %}
+{% block css %}
+{% block maxcdn %}
+	<!--maxcdn-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
+
+<!--import materialize.css-->
+<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+<!--import playcode.css-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/playcode_min.css'%}">
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+{% endblock %}
+{% block toggle %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script>
+	window.jQuery||document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')
+</script>
+{% endblock %}
+{% block logo %}
+<ul class="nav navbar-nav" >
+	<li>
+		<a class="a-index" href="{% url 'playcode/index'%}">Inicio</a>
+	</li>
+	<li>
+    	<a class="a-index" href="{% url 'proyects' %}">Proyectos</a>
+  	</li>
+  	<li>
+    	<a class="a-index" href="{% url 'community' %}">Comunidad</a>
+  	</li>
+</ul>
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block head-page%}
+{% endblock %}
+{% block head-page2 %}
+{% endblock %}
+{% block enlproy%} 
+{% endblock %}
+{% block enlcom %}
+{% endblock %}
+{% block sesion %}
+{% endblock %}
+
+
+
+
+{% block inicio %}
+
+<p class="titles-forms"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></p>
+
+
+<div class="center-contents">
+
+	<form method='POST' enctype='multipart/form-data'>
+	
+		{% csrf_token %}
+		<div class="row">
+			<div class="file-field input-field">
+				<div class="row">
+      				<div class="btn">
+        				<span>{{ form.image.label }}</span>
+        				{{ form.image }}
+      				</div>
+      			</div>
+      			<div class="row">
+      				<div class="file-path-wrapper">
+         				<input class="file-path validate" type="text" placeholder="Selecciona una Imagen">
+      				</div>
+    			</div>
+    		</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				{{ form.title }}
+				<label for="{{ form.title.name }}">{{ form.title.label }}</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				{{ form.description }}
+				<label for="{{ form.description.name }}">{{ form.description.label }}</label>
+			</div>
+		</div>
+
+  		<div class="row">
+			<div class="input-field col s6">
+				<div class="content-btn-forms">
+					<button class="btn-forms" type="submit">Hecho</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<!--Scripts-->
+
+<script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+{% endblock %}
+
+{% block maxCDNjQuery%}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{% endblock %}
