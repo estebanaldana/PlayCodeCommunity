@@ -1,0 +1,207 @@
+<!--Structure-->
+
+{% load staticfiles %}
+{% load to_raw %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title> {% block title %} PlayCode {% endblock %}</title>
+{% block maxcdn %}
+	<!--maxcdn-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/playcode_min.css'%}">
+<link rel="icon" type="image" href="{% static 'iconos/ico.png'%}">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block css %}
+	{% endblock %}
+	{% block stylesfacebook %}
+	{% endblock %}
+</head>
+<body>
+{% block facebook %}
+{% endblock %}
+
+
+	{% block encavezado %}
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+			{% block toggle %}
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" arial-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			{% endblock %}
+				{% block logo%}
+				<a><img class="img-logo" src="{% static 'imagenes/logo.png' %}" hspace="50"></a>
+				{% endblock%}
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			{% block head-page%}
+			<div class="head-page">
+			{% endblock %}
+				{% block search %}
+				{% block size-search %}
+				{% endblock %}
+				{% endblock %}
+				<ul class="nav navbar-nav" >
+				{% block enlproy%} 
+					<li><a href="{% url 'proyects' %}">Proyectos</a></li>
+				{% endblock %}
+				{% block enlcom %}
+					<li><a href="{% url 'community' %}">Comunidad</a></li>
+				{% endblock %}
+				{% block subir %}
+				{% endblock %}
+				{% block sesion %}
+					{% if user.is_authenticated %}
+					<li class="dropdown">
+         				 <a href="{{ user.username }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ user.username|truncatechars:9 }} <span class="caret"></span></a>
+          				<ul class="dropdown-menu">
+            				<li><a href="{% url 'profile' %}?pc={{ request.COOKIES.sessionid }}">Perfil</a></li>
+            				<li><a href="{% url 'you_community' %}">Tu comunidad</a></li>
+            				<li><a href="{% url 'you_proyect' %}">Tus Proyectos</a></li>
+            				<li role="separator" class="divider"></li>
+            				<li><a href="{% url 'logout' %}">Cerrar Sesion</a></li>
+          				</ul>
+        			</li>
+				{% else %}
+						<li><a href="{% url 'login'%}">Iniciar Sesion</a></li>
+				{% endif %}
+				{% endblock %}
+				</ul>
+			{% block head-page2 %}
+			</div>
+			{% endblock %}
+			</div>
+
+		</div>
+	</nav>
+{% endblock %}
+
+
+	{% block inicio %}
+
+	<div class="mozaico-fixed">
+		<div class="mozaico-space">
+
+			<!--<div class="fixed-contents">
+
+				<button class="fixed-button"><a href="">Criaturas</a></button>
+			</div>
+			<div class="fixed-contents">
+
+				<p class="fixed-p">Juego de Plataformas Proximamente</p>
+
+			</div>-->
+
+		</div>
+	</div>
+
+
+
+
+
+	<div class="block-content">
+		<div class="section-list-novedad">
+			{% if object_list_community %}
+			<table>
+			{% cycle '<tr>' '' '' '' %}
+				<td>
+				<p class="p-des">{{ object_list_community.user|title }}</p>
+				{% if object_list_community.image %}
+					<img class="img-pt" src="{{ object_list_community.image|to_raw }}">
+				{% else %}
+					<img class="img-pt" src="{% static 'imagenes/logo.png' %}">
+				{% endif %}
+					<div class="div-com">
+						<p class="p-des">{{ object_list_community.title }}</p>
+						<p class="p-des">{{ object_list_community.description|truncatechars_html:200 }}</p>
+					</div>
+					<a href="{% url 'details_community' %}?detail&community={{ object_list_community.id|url_to_encode_community }}" class="p-des">Ver Completo</a>
+				</td>
+			{% cycle '' '' '' '</tr>' %}
+			</table>
+			{% else %}
+			<p class="p-novedad">No Hay Novedad</p>
+			{% endif %}
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+		<div class="section-list-novedad">
+			{% if object_list_proyect %}
+			<table>
+			{% cycle '<tr>' '' '' '' %}
+				<td>
+					<p class="p-des">{{ object_list_proyect.title }}</p>
+				{% if object_list_proyect.image %}
+					<img class="img-pt" src="{{ object_list_proyect.image|to_raw }}">
+				{% else %}
+					<img class="img-pt" src="{% static 'imagenes/logo.png' %}">
+				{% endif %}
+					<p class="p-des">{{ object_list_proyect.developer|title }}</p>
+					<a href="{% url 'details_proyects' %}?detail&project={{ object_list_proyect.id|url_to_encode_project }}" class="p-des">Ver Completo</a>
+				</td>
+			{% cycle '' '' '' '</tr>' %}
+			</table>
+		{% else %}
+			<p class="p-novedad">No Hay Novedad</p>
+			{% endif %}
+		</div>
+	</div>
+	{% endblock %}
+
+{% block maxCDNjQuery%}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{% endblock %}
+
+
+<!--Scripts-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script>
+	window.jQuery||document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')
+</script>
+
+
+<div class="space">
+</div>
+
+	
+
+	{% block piepagina %}
+	<div class="pie">
+		<div class="content-footer">
+			<img class="img-footer" src="{% static 'imagenes/portada.jpg' %}">
+		</div>
+
+			
+		<div class="content-footer">
+			<div class="sociales"><a href="https://www.facebook.com/PlayCodeCompany/"><img src="{% static 'imagenes/facebook.png' %}" class="img-footer-icon"></a></div>
+			<div class="sociales"><a href="https://twitter.com/EstebanAldana10"><img src="{% static 'imagenes/twitter.png' %}"  class="img-footer-icon"></a></div>
+			<div class="sociales"><a href="https://www.youtube.com/channel/UCsVYL93M_Higkf4gRw0kALw"><img src="{% static 'imagenes/youtube.png' %}" class="img-footer-icon"></a></div>
+		</div>
+	</div>
+	{% endblock %}
+</body>
+</html>
