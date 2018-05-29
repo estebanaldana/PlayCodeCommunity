@@ -1,0 +1,81 @@
+{% extends 'base/structure.html' %}
+{% load staticfiles %}
+{% block css %}
+<!--import materialize.css-->
+<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--import playcode.css-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/playcode_min.css'%}">
+{% endblock %}
+{% block encavezado %}
+{% endblock %}
+
+{% block inicio %}
+
+{% if validlink %}
+
+<p class="titles-forms"><span class="glyphicon glyphicon-king" aria-hidden="true"></span></p>
+
+<div class="center-contents">
+	<form method="post">
+	{% csrf_token %}
+
+		<div class="row">
+			<div class="input-field col s6">
+				<label for="id_new_password1">Nueva Contraseña: </label>	
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				{{ form.new_password1.errors }}
+				{{ form.new_password1 }}	
+			</div>
+		</div>
+		
+		<div class="row">	
+			<div class="input-field col s6">
+				<label for="id_new_password2">Confirmar Contraseña: </label>
+			</div>
+		</div>
+
+		<div class="row">	
+			<div class="input-field col s6">
+				{{ form.new_password2.errors }}
+				{{ form.new_password2 }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field col s6">
+				<div class="content-btn-forms">
+					<button class="btn-forms" type="submit">Confirmar</button>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</div>
+
+{% else %}
+
+<div class="pass_done">
+	<p class="pass_done_txt">Esta Accion ya no Existe</p>
+</div>
+
+{% endif %}
+
+<link rel="stylesheet" type="text/css" href="https://materializecss.com/css/ghpages-materialize.css">
+
+<!--Scripts-->
+
+<script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+{% endblock %}
+
+{% block piepagina %}
+{% endblock %}

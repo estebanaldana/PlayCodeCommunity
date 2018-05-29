@@ -1,0 +1,22 @@
+{% extends 'base/structure.html' %}
+{% load staticfiles %}
+{% block encavezado %}
+{% endblock %}
+
+{% block inicio %}
+<div class="pass_done">
+	<p class="pass_done_txt">Tu Accion ha sido un Exito</p>
+	<img class="pass_done_img" src="{% static 'imagenes/logo.png'%}">
+	<p class="pass_done_name">PLAY;CODE</p>
+</div>
+<div class="content-btn-forms">
+	<p>
+		<a class="btn-forms" style="text-decoration: none;" href="{% url 'playcode/index'%}">Inicio</a>
+	</p>
+</div>
+{% endblock %}
+
+
+{% block piepagina %}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+Solicitaste Restablecer o Cambiar tu Contraseña?
+
+Si la solicitaste esta petición hacer click en el siguiente enlace.
+
+{% block reset_link %}
+	{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+{% endblock %}
+
+Tu nombre de usuario es: {{ user.get_username }} 
+
+Si no realizaste esta petición ignara el enlace
+
+Gracias por ser parte de nuestra comunidad PLAY;CODE
