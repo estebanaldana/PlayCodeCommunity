@@ -28,7 +28,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = False
 
 #ALLOWED_HOSTS = ['playcode.herokuapp.com','localhost','127.0.0.1']
-ALLOWED_HOSTS = ['playcode.herokuapp.com', '.playcode.com']
+ALLOWED_HOSTS = ['playcode.herokuapp.com', 'www.playcode.com', '.playcode.com']
 
 # Application definition
 
