@@ -12,6 +12,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.conf import settings
 from flask import current_app, Flask
+from PIL import Image
 
 from apps.community.models import Community
 from apps.community.forms import ComForm
@@ -43,7 +44,10 @@ class CreateCommunity(CreateView):
 			request_image = str(request.FILES.get('image'))
 
 			res_file_image = ''
+			#System Unix 
 			UnidadDIR = os.path.expanduser("~")
+			#System Windosw
+			UnidadDIRW = os.path.expanduser("home")
 
 			if(not os.path.isdir(UnidadDIR)):
 				return UnidadDIR
@@ -59,27 +63,36 @@ class CreateCommunity(CreateView):
 			username = str(request.user)
 
 			_file_size_image = os.path.getsize(res_file_image)
+			_check_image_width_height = Image.open(res_file_image)
+			width, height = _check_image_width_height.size
+			print("width",width, "height", height)
 			CHUCK_SIZE_IMAGE = 4 *1024 * 1024 #4MB
+			min_image_Width = 1999 #min_width = 1200
+			min_image_Height = 1999 #min_height = 1200
+			
+			if width  > min_image_Width and height > min_image_Height:
 
-			if _file_size_image <= CHUCK_SIZE_IMAGE:
-
-				if not result_image == " ":
-					with open(result_image, "rb") as f:
-						dbxClient.files_upload(f.read(), '/imagenes_playcode/'+username+'/'+'community'+'/'+back_file_image)
-				else:
-					messages.error(request, 'lo sentimos el arcivo no existe o la validacion fue incorrecta')
-					return self.render_to_response(self.get_context_data(form=form))
-
-				try:
-					community.image = dbxClient.sharing_create_shared_link_with_settings('/imagenes_playcode/'+username+'/'+'community'+'/'+back_file_image).url
-				except ApiError as err:
-					if err.error.is_shared_link_already_exists():
-						messages.error(request, 'Esta imagen ya existe en tus proyectos')
+				if _file_size_image <= CHUCK_SIZE_IMAGE:
+					if not result_image == " ":
+						with open(result_image, "rb") as f:
+							dbxClient.files_upload(f.read(), '/imagenes_playcode/'+username+'/'+'community'+'/'+back_file_image)
+					else:
+						messages.error(request, 'lo sentimos el arcivo no existe o la validacion fue incorrecta')
 						return self.render_to_response(self.get_context_data(form=form))
+
+					try:
+						community.image = dbxClient.sharing_create_shared_link_with_settings('/imagenes_playcode/'+username+'/'+'community'+'/'+back_file_image).url
+					except ApiError as err:
+						if err.error.is_shared_link_already_exists():
+							messages.error(request, 'Esta imagen ya existe en tus proyectos')
+							return self.render_to_response(self.get_context_data(form=form))
+				else:
+					messages.error(request, 'Lo sentimos la Imagen es muy grande, (tamaño de la imagen: menos de 4MB)')
+					return self.render_to_response(self.get_context_data(form=form))
 			else:
-				messages.error(request, 'Lo sentimos la Imagen es muy grande, (tamaño de la imagen: menos de 4MB)')
+				messages.error(request, 'Upps la imagen debe ser mayor a 1200 x 1200')
 				return self.render_to_response(self.get_context_data(form=form))
-				
+					
 			community.save()
 			return HttpResponseRedirect(self.get_success_url())
 		else:
@@ -119,6 +132,8 @@ def ComunityList(request):
 	return render(request, "community/community.html", context)
 
 
+
+
 def Details(request):
 	try:
 		_signing_ = str(request.GET.get('community'))
@@ -131,6 +146,8 @@ def Details(request):
 		return render(request, 'community/details_com.html', context)
 	except signing.BadSignature:
 		return render(request, '404.html')
+
+
 
 class CommunityUser(ListView):
 	model = Community

@@ -18,7 +18,7 @@
 {% if user.is_authenticated %}
 	<li class="dropdown">
 		<a class="a-index" href="{{ user.username }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ user.username }} <span class="caret"></span></a>
-		<ul class="dropdown-menu">
+		<ul class="dropdown-menu dropdown-menu-name-user">
 			<li><a href="{% url 'profile' %}?pc={{ request.COOKIES.sessionid }}">Perfil</a></li>
 			<li class="active"><a class="a-dropdown">Tu comunidad</a></li>
 			<li><a class="a-dropdown" href="{% url 'you_proyect' %}">Tus Proyectos</a></li>
