@@ -64,6 +64,20 @@
 	<form method='POST' enctype='multipart/form-data'>
 	
 		{% csrf_token %}
+
+		{% if messages %}
+    		<div class="div-alert">
+      			<ul>
+        			{% for message in messages %}
+        			<li {% if messages.tags %} class="{{ message.tags }}" {% endif %}>
+          			{% if message.level == DEFAULT_MESSAGE_LEVELS.ERRORS %} Importante: {% endif %}
+          			{{ message }}
+        			</li>
+        			{% endfor %}
+      			</ul>
+    		</div>
+    	{% endif %}
+    	
 		<div class="row">
 			<div class="file-field input-field">
 				<div class="row">

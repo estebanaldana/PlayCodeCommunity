@@ -36,7 +36,8 @@ urlpatterns = [
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)/$', password_reset_confirm, 
         {'template_name': 'recover_user/pass_reset_confirm.html'}, name="password_reset_confirm"),
     url(r'^reset/done', password_reset_complete, {'template_name':'recover_user/pass_reset_complete.html'},
-        name="password_reset_complete")
+        name="password_reset_complete"),
+    url(r'^api/', include('apps.api.urls')),
 ]
 
 handler404 = error_404

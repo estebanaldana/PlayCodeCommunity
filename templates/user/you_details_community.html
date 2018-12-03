@@ -17,7 +17,7 @@
 {% block logo %}
 <ul class="nav navbar-nav" >
 	<li>
-		<a href="{% url 'playcode/index'%}">Inicio</a>
+		<a href="{% url 'playcode/index'%}" class="navbar-index">Inicio</a>
 	</li>
 </ul>
 {% endblock %}
@@ -46,7 +46,7 @@
 			<p class="p-description">{{ instance.description }}</p>
 		</div>
     	<div class="publishers">
-      		<a class="waves-effect waves-light btn" href="{% url 'delete_community' %}?remove={{ instance.id|url_to_encode_community }}">Eliminar</a>
+      		<a class="waves-effect waves-light btn btn-delete" href="{% url 'delete_community' %}?remove={{ instance.id|url_to_encode_community }}">Eliminar</a>
     	</div>
 	</div>
 </div>

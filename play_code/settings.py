@@ -25,10 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #ALLOWED_HOSTS = ['playcode.herokuapp.com','localhost','127.0.0.1']
-ALLOWED_HOSTS = ['playcode.herokuapp.com', 'www.playcode.com', '.playcode.com']
+ALLOWED_HOSTS = ['playcode.herokuapp.com', 'www.playcode.com', '.playcode.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.api',
     'apps.proyects',
     'apps.user',
     'apps.index',
     'apps.community',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -145,21 +147,26 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# Dropbox configuration
+# app_key = '93wkug602zockw1'
+# app_secret = 'dos66gvn0t5vx2s'
 
-#MEDIA_URL =  '/media/'
-#MEDIAFILES_DIRS = [
-#   os.path.join(BASE_DIR, 'Media')
-#]
+# auth_flow = dropbox.DropboxOAuth2FlowNoRedirect(app_key, app_secret)
 
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# authorize_url = auth_flow.start()
 
-#DROPBOX_OAUTH2_TOKEN = ''
-#DROPBOX_ROOT_PATH = ''
+# auth_code = input("Enter the authorization code here: ").strip()
+
+# oauth_result = auth_flow.finish(auth_code)
+# access_token = oauth_result.access_token
+
+# Storange Dropbox
+
 MEDIA_URL = ''
 
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorange'
+
+# Login
 
 LOGIN_URL = reverse_lazy('login')
 

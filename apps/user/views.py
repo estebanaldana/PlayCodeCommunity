@@ -156,7 +156,7 @@ def CommunityDelete(request):
 			split_parametro_image = split_image.replace('?dl=0', '')
 			dbxClient.files_delete('/imagenes_playcode/'+username+'/'+'community'+'/'+split_parametro_image)
 			instance.delete()
-			return redirect('you_proyect')
+			return redirect('you_community')
 		else:
 			return render(request, '404.html')
 	except signing.BadSignature:
