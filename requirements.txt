@@ -3,9 +3,10 @@ certifi==2017.4.17
 chardet==3.0.4
 click==6.7
 dj-database-url==0.4.2
-Django==1.11
+Django==2.1.4
+djangorestframework==3.8.2
 dropbox==8.7.1
-Flask==0.12.2
+Flask==1.0.2
 google-auth==1.0.1
 google-auth-httplib2==0.0.2
 google-cloud-core==0.25.0
@@ -16,7 +17,7 @@ gunicorn==19.7.1
 httplib2==0.10.3
 idna==2.5
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.10
 MarkupSafe==1.0
 olefile==0.44
 Pillow==4.1.1
@@ -30,5 +31,5 @@ rsa==3.4.2
 six==1.10.0
 urllib3==1.21.1
 virtualenv==15.1.0
-Werkzeug==0.12.2
+Werkzeug==0.14.1
 whitenoise==3.3.0
