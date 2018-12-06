@@ -147,19 +147,6 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-# Dropbox configuration
-# app_key = '93wkug602zockw1'
-# app_secret = 'dos66gvn0t5vx2s'
-
-# auth_flow = dropbox.DropboxOAuth2FlowNoRedirect(app_key, app_secret)
-
-# authorize_url = auth_flow.start()
-
-# auth_code = input("Enter the authorization code here: ").strip()
-
-# oauth_result = auth_flow.finish(auth_code)
-# access_token = oauth_result.access_token
-
 # Storange Dropbox
 
 MEDIA_URL = ''

@@ -7,17 +7,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from django.http import Http404, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.contrib import messages
 from django.conf import settings
-from flask import current_app, Flask
 from PIL import Image
 
 from apps.community.models import Community
 from apps.community.forms import ComForm
-from apps.community import storage
-
 
 dbxClient = dropbox.Dropbox(os.environ['DROPBOX'])
 
@@ -65,7 +62,6 @@ class CreateCommunity(CreateView):
 			_file_size_image = os.path.getsize(res_file_image)
 			_check_image_width_height = Image.open(res_file_image)
 			width, height = _check_image_width_height.size
-			print("width",width, "height", height)
 			CHUCK_SIZE_IMAGE = 4 *1024 * 1024 #4MB
 			min_image_Width = 1999 #min_width = 1200
 			min_image_Height = 1999 #min_height = 1200

@@ -1,6 +1,6 @@
 import os
 import dropbox
-from django.conf import settings
+import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
@@ -8,9 +8,7 @@ from django.views.generic import CreateView, ListView
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
-from django.views.decorators.csrf import csrf_protect
 from django.core import signing
-import json
 
 from django.contrib.auth.models import User
 from apps.user.forms import UserForm

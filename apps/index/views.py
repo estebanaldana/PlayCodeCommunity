@@ -1,12 +1,7 @@
-import dropbox 
-import os
-import requests
-import json
 from django.shortcuts import render
 from apps.proyects.models import Products
 from apps.community.models import Community
 from django.core.exceptions import ObjectDoesNotExist
-from django.views.defaults import page_not_found, server_error
 
 def index(request):
 
