@@ -39,7 +39,6 @@
 	margin-left: 35%;
 }
 
-
 /*navbar menu*/
 .navbar-nav{
 	margin-top: 8px;
@@ -47,6 +46,10 @@
 
 .navbar-header{
 	height: 10px;
+}
+
+.center-contents .row{
+	margin-right: 0px;
 }
 
 /* seccion */
@@ -829,13 +832,21 @@ img{
     	margin-top: 25px;
 	}
 
+	.navbar-default{
+		height: 80px;
+	}
+
+	.navbar-nav-up{
+		margin-top: 15px;
+	}
+
 	.navbar-index{
 		margin-top: -17px;
 	}
 
 	.img-logo{
 		max-width: 80px;
-    	margin-top: 10px;
+    	margin-top: -2px;
 	}
 	
 	/* contents */
@@ -860,7 +871,6 @@ img{
 	.a-index{
 	font-size: 20px;
 	margin-left: 10px;
-	margin-top: -18px;
 	}
 
 	.dropdown-menu-name-user{
