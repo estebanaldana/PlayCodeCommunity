@@ -26,3 +26,6 @@ def error_404(request):
 
 def error_500(request):
 	return render(request, '500.html', status=500)
+
+def cv(request):
+	return render(request, 'cv/cv.html')
