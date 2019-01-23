@@ -24,22 +24,6 @@
 </head>
 <body>
 
-<!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
-
-<!-- Your customer chat code -->
-<div class="fb-customerchat"
-  attribution=setup_tool
-  page_id="246452632410455"
-  theme_color="#6699cc"
-  logged_in_greeting="Hola!, Bienvenido :)"
-  logged_out_greeting="Hola!, Bienvenido :)">
-</div>
-
-{% block facebook %}
-{% endblock %}
-
-
 	{% block encavezado %}
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -196,16 +180,6 @@
 	window.jQuery||document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')
 </script>
 
- <!--Script Facebook-->
-<script> (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_MX/sdk/xfbml.customerchat.js';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk')); </script>
-
-
 <div class="space">
 </div>
 
@@ -225,5 +199,30 @@
 		</div>
 	</div>
 	{% endblock %}
+
+{% block botmessenger %}
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+
+ <!--Script Facebook-->
+<script> (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk')); </script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="246452632410455"
+  theme_color="#6699cc"
+  logged_in_greeting="Hola!, Bienvenido :)"
+  logged_out_greeting="Hola!, Bienvenido :)">
+</div>
+
+{% endblock %}
 </body>
 </html>

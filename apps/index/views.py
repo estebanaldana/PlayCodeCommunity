@@ -29,3 +29,4 @@ def error_500(request):
 
 def cv(request):
 	return render(request, 'cv/cv.html')
+	

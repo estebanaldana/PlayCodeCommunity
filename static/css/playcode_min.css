@@ -52,6 +52,10 @@
 	margin-right: 0px;
 }
 
+.navbar-form .form-group {
+	margin-left: -168px;
+}
+
 /* seccion */
 
 .section-list-novedad{
@@ -982,6 +986,10 @@ img{
 		font-family: arial black;
 		font-size: 12px;
 	}
+
+	.navbar-form .form-group {
+		margin-left: 12px;
+	}
 }
 
 @media screen and (max-width: 768px) and (min-width: 426px){
@@ -1027,6 +1035,10 @@ img{
 	/*dropdown menu*/
 	.navbar-nav>li>.dropdown-menu-name-user{
 		margin-left: 0%;
+	}
+
+	.navbar-form .form-group {
+		margin-left: 3px;
 	}
 }
 
