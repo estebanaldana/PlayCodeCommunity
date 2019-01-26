@@ -29,4 +29,13 @@ def error_500(request):
 
 def cv(request):
 	return render(request, 'cv/cv.html')
+
+def pdp(request):
+	return render(request, 'politica_privacidad/pdp.html')
+
+def tyc(request):
+	return render(request, 'terminos_condiciones/tyc.html')
+
+def pcookies(request):
+	return render(request, 'politica_cookies/pcookies.html')
 	
