@@ -17,12 +17,3 @@ class UserForm(UserCreationForm):
 		model = User
 
 		fields=('username', 'first_name', 'last_name', 'email')
-		# def email_clear(self):
-			
-		# 	cleaned_data = super(UserForm, self).email_clear()
-
-		# 	email_exists = (Users.objects.filter(email = cleaned_data.get('email')).count() > 0)
-		# 	email_exists = cleaned_data.get('email')
-
-		# 	if email_exists:
-		#  		raise forms.validationError("Este Email ya existe")

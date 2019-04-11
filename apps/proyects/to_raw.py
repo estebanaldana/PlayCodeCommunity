@@ -27,4 +27,4 @@ def url_to_encode_community(value):
 @stringfilter
 def url_to_encode_project(value):
 	encode = signing.dumps(value)
-	return encode 
+	return encode

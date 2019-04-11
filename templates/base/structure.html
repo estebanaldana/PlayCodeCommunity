@@ -154,7 +154,8 @@
 				{% else %}
 					<img class="img-pt" src="{% static 'imagenes/logo.png' %}">
 				{% endif %}
-					<p class="p-des">{{ object_list_proyect.developer|title }}</p>
+					<p class="p-des">{{ object_list_proyect.description|truncatechars_html:200 }}</p>
+					<p class="p-des">{{ object_list_proyect.developer|title|upper }}</p>
 					<a href="{% url 'details_proyects' %}?detail&project={{ object_list_proyect.id|url_to_encode_project }}" class="p-des">Ver Completo</a>
 				</td>
 			{% cycle '' '' '' '</tr>' %}
@@ -187,15 +188,34 @@
 
 	{% block piepagina %}
 	<div class="pie">
-		<div class="content-footer">
-			<img class="img-footer" src="{% static 'imagenes/portada.jpg' %}">
-		</div>
+		<div class="color-footer">
+			<div class="content-footer">
+				<img class="img-footer" src="{% static 'imagenes/portada.jpg' %}">
+			</div>
 
+			<div class="footer-politic">
+				<a href="{% url 'pdp' %}" style="text-decoration: none;"><p style="color: white;">Aviso de Privacidad</p></a>
+
+				<a href="{% url 'tyc' %}" style="text-decoration: none;"><p style="color: white;">Términos y Condiciones</p></a>
+			</div>
 			
-		<div class="content-footer">
-			<div class="sociales"><a href="https://www.facebook.com/PlayCodeCompany/"><img src="{% static 'imagenes/facebook.png' %}" class="img-footer-icon"></a></div>
-			<div class="sociales"><a href="https://twitter.com/EstebanAldana10"><img src="{% static 'imagenes/twitter.png' %}"  class="img-footer-icon"></a></div>
-			<div class="sociales"><a href="https://www.youtube.com/channel/UCsVYL93M_Higkf4gRw0kALw"><img src="{% static 'imagenes/youtube.png' %}" class="img-footer-icon"></a></div>
+			<div class="content-footer">
+				<div class="sociales"><a href="https://www.facebook.com/PlayCodeCommunity/">
+					<div class="border-img-footer">
+						<img src="{% static 'imagenes/facebook.png' %}" class="img-footer-icon">
+					</div>
+				</a></div>
+				<div class="sociales"><a href="https://twitter.com/EstebanAldana10">
+					<div class="border-img-footer">
+						<img src="{% static 'imagenes/twitter.png' %}"  class="img-footer-icon">
+					</div>
+				</a></div>
+				<div class="sociales"><a href="https://www.youtube.com/channel/UCsVYL93M_Higkf4gRw0kALw">
+					<div class="border-img-footer">
+						<img src="{% static 'imagenes/youtube.png' %}" class="img-footer-icon">
+					</div>
+				</a></div>
+			</div>
 		</div>
 	</div>
 	{% endblock %}

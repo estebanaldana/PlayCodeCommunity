@@ -45,7 +45,7 @@
 			{% endif %}
 	
 			<p class="p-donwload">
-				<a class="a-donwload" href="{{ instance.product }}">
+				<a class="a-donwload" href="{{ instance.product|to_dl }}">
 					<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
 				</a>
 			</p>
@@ -96,4 +96,7 @@
 {% endblock %}
 
 {% block botmessenger %}
+{% endblock %}
+
+{% block piepagina %}
 {% endblock %}

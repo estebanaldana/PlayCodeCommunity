@@ -36,6 +36,6 @@ def pdp(request):
 def tyc(request):
 	return render(request, 'terminos_condiciones/tyc.html')
 
-def pcookies(request):
-	return render(request, 'politica_cookies/pcookies.html')
+def limitContent(request):
+	return render(request, 'limitContent.html')
 	

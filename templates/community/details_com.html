@@ -23,28 +23,6 @@
 {% endblock %}
 
 {% block facebook %}
-<!--comments-->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.9&appId=1162353997226233";
-  fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-
-<!--compartir-->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.9&appId=1162353997226233";
-  fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
 
 <!--compartir twitter-->
 <script>window.twttr = (function(d, s, id) {
@@ -65,11 +43,6 @@
   }(document, "script", "twitter-wjs"));
 </script>
 
-<!--Google +-->
-<script src="https://apis.google.com/js/platform.js" async defer>
-  {lang: 'es-419'}
-</script>
-
 
 {% endblock %}
 
@@ -87,15 +60,10 @@
 			{% endif %} 	
     </div>
 
-	<iframe src="https://www.facebook.com/plugins/share_button.php?href={{request.build_absolute_uri}}&layout=button_count&size=small&mobile_iframe=true&appId=1162353997226233&width=144&height=20" width="90" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"> 
+	<iframe src="https://www.facebook.com/plugins/share_button.php?href={{request.build_absolute_uri}}&layout=button_count&size=small&mobile_iframe=true&appId=2089338587819600&width=144&height=20" width="90" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"> 
   </iframe>
 
 	<a href="https://twitter.com/share" class="twitter-share-button" data-text="PlayCode Comunidad {{instance.user}}: " data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-	<div class="g-plus" data-action="share" data-href="{{request.build_absolute_uri}}"></div>
-
-	<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-	<script type="IN/Share" data-url="{{request.build_absolute_uri}}" data-counter="right"></script>
 
 	</div>
 	<div class="section-list-novedad">
@@ -106,7 +74,19 @@
 	</div>
 </div>
 
-<div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="3"></div>
+<!--comments-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.2&appId=2089338587819600';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Comments Facebook -->
+<div class="fb-comments" data-href="https://f2e11410.ngrok.io" data-numposts="3"></div>
+
 {% else %}
 <div class="div_nov">
   <p>Error</p>
@@ -123,4 +103,7 @@
 {% endblock %}
 
 {% block botmessenger %}
+{% endblock %}
+
+{% block piepagina %}
 {% endblock %}

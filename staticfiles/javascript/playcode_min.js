@@ -23,3 +23,8 @@ function oculd(obj)
 		obj.type = "password";
 	}
 }
+
+function donwload(obj)
+{
+	alert("descarga: " + obj);
+}

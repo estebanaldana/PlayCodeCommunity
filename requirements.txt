@@ -6,13 +6,6 @@ dj-database-url==0.4.2
 Django==1.11
 djangorestframework==3.8.2
 dropbox==8.7.1
-Flask==1.0.2
-google-auth==1.0.1
-google-auth-httplib2==0.0.2
-google-cloud-core==0.25.0
-google-cloud-storage==1.2.0
-google-resumable-media==0.1.1
-googleapis-common-protos==1.5.2
 gunicorn==19.7.1
 httplib2==0.10.3
 idna==2.5

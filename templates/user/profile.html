@@ -6,6 +6,16 @@
 {% endblock %}
 {% block css %}
 
+<!--import materialize.css-->
+<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+<!--import materialize.js-->
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+<!--import playcode.css-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/playcode_min.css'%}">
+<!-- javascript playcode -->
+<script type="text/javascript" src="{% static 'javascript/playcode_min.js' %}"></script>
+
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--Let browser know website is optimized for mobile-->
@@ -77,7 +87,18 @@
 		<p class="dates">{{ instance.last_name }}</p>
 	</div>
 </div>
+
 <br>
+
+<div style="width: 200%; margin-top: 150px;">
+	<div class="row">
+		<div class="input-field col s6">
+			<div class="content-btn-forms">
+				<a class="waves-effect waves-light btn" href="{% url 'update' %}?user={{ request.COOKIES.sessionid }}">Actualizar Datos</a>
+			</div>
+		</div>
+	</div>
+</div>
 
 {% else %}
 <div class="div_nov">

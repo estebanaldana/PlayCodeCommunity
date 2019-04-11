@@ -30,9 +30,19 @@
 }
 
 .content-footer{
+	margin-top: 29px;
 	width: 45%;
 	float: left;
 	text-align: center;
+}
+
+.border-img-footer {
+	margin-left: -32px;
+	margin-top: 6px;
+	background-color: white;
+    border-radius: 30px;
+    width: 55px;
+    height: 55px;
 }
 
 .center-contents{
@@ -84,17 +94,32 @@
 /* footer */
 
 
-.pie{
+.pie {
 	margin-top: 15%;
 	width: 90%;
 	margin-left: 5%;
 	margin-right: 5%;
 }
 
-.sociales{
+.color-footer {
+	position: absolute; 
+	width: 100%; height: 202px; 
+	background-color: black; 
+	margin-left: -64px;
+}
+
+.sociales {
 	margin-top: 15%;
 	float: right;
 	margin-right: 15%;
+}
+
+.footer-politic{
+	position: absolute;
+    margin-left: 35%;
+    margin-top: 3%;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 
@@ -395,7 +420,9 @@ img{
 }
 
 .img-footer-icon{
-	max-width: 50px;
+	max-width: 59px;
+    margin-top: 8px;
+    margin-left: -2px;
 }
 
 

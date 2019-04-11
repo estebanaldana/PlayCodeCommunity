@@ -22,7 +22,6 @@ from django.conf.urls import handler404, handler500
 from apps.index.views import error_404, error_500
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^', include('apps.index.urls')),
     url(r'^projects/', include('apps.proyects.urls')),
     url(r'^community/', include('apps.community.urls')),

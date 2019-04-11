@@ -73,12 +73,12 @@
 			{% else %}
 			<img class="img-pt" src="{% static 'imagenes/logo.png' %}">
 			{% endif %}
-			{% if pt.product %}
-			<p class="btn-des"><a class="a-des" href="{{ pt.product|to_dl }}"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a></p> 
+			{% if pt.description %}
+			<p class="p-des">{{ pt.description|truncatechars_html:200 }}</p>
 			{% else %}
 			<p class="p-des">ERROR</p>
 			{% endif %}
-			<p class="p-des">{{ pt.developer|title }}</p>
+			<p class="p-des">{{ pt.developer|title|upper }}</p>
 			<a href="{% url 'details_proyects' %}?detail&project={{ pt.id|url_to_encode_project }}" class="p-des">Ver Completo</a>
 		</td>
 	{% cycle '' '' '' '</tr>' %}
@@ -112,6 +112,9 @@
 	</div>
 	{% endif %}
 
+{% endblock %}
+
+{% block piepagina %}
 {% endblock %}
 
 {% block maxCDNjQuery%}
