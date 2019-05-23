@@ -7,11 +7,11 @@ from apps.proyects.validators import valid_extension_image, valid_extension_proj
 from django.core.files.storage import FileSystemStorage
 
 class Social(models.Model):
-	socialFacebook = models.CharField(null=True, max_length=100, validators=[valid_extension_social_facebook])
-	socialTwiter = models.CharField(null=True, max_length=100, validators=[valid_extension_social_twitter])
-	socialGoogle = models.CharField(null=True, max_length=100, validators=[valid_extension_social_google])
-	socialYoutube = models.CharField(null=True, max_length=100, validators=[valid_extension_social_youtube])
-	socialLinkedin = models.CharField(null=True, max_length=100, validators=[valid_extension_social_linkedin])
+	socialFacebook = models.CharField(default="none", null=True, blank=True, max_length=100, validators=[valid_extension_social_facebook])
+	socialTwiter = models.CharField(default="none", null=True, blank=True, max_length=100, validators=[valid_extension_social_twitter])
+	socialGoogle = models.CharField(default="none", null=True, blank=True, max_length=100, validators=[valid_extension_social_google])
+	socialYoutube = models.CharField(default="none", null=True, blank=True, max_length=100, validators=[valid_extension_social_youtube])
+	socialLinkedin = models.CharField(default="none", null=True, blank=True, max_length=100, validators=[valid_extension_social_linkedin])
 
 	def __str(self):
 		return '{}{}{}{}{}'.format(self.socialFacebook, self.socialTwiter, self.socialGoogle, self.socialYoutube, self.socialLinkedin)

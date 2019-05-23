@@ -41,6 +41,6 @@ urlpatterns = [
 
 handler404 = error_404
 handler500 = error_500
-#if settings.DEBUG:
-    #urlpatterns += static(settings.MEDIA_URL, document_root=settings.DROPBOX_ROOT_PATH)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

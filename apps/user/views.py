@@ -155,7 +155,8 @@ def ProyectDelete(request):
 		_id_ = signing.loads(_signing_)
 		_id_delete_project_ = _id_
 		instance = get_object_or_404(Products, id=_id_delete_project_)
-		instanceS = get_object_or_404(Social, id=_id_delete_project_)
+		idSocial = instance.sociales.id
+		instanceS = get_object_or_404(Social, id=idSocial)
 		_instance_user_remove_project = instance.user.id
 		if _id_user_ == _instance_user_remove_project:
 			image = instance.image

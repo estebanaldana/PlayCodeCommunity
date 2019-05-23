@@ -38,15 +38,37 @@
 			{% endif %}
 	
 			<p class="p-developer">Fecha del proyecto: {{ instance.timestamp }}</p>
-			<p class="p-developer">Fecha del proyecto: {{ instance.product }}</p>
+			<p class="p-developer">proyecto:</p>
+			<a class="a-infofile" href="{{ instance.product }}"> <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span> </a>
 
 			<p class="p-developer">{{ instance.developer|upper }}</p>
 			<p class="p-developer">Redes Sociales</p>
-			<p class="p-des">Facebook: {{ instance.sociales.socialFacebook }}</p>
-			<p class="p-des">Twitter: {{ instance.sociales.socialTwiter }}</p>
-			<p class="p-des">Youtube: {{ instance.sociales.socialYoutube }}</p>
-			<p class="p-des">Linkedin: {{ instance.sociales.socialLinkedin }}</p>
-			<p class="p-des">Google: {{ instance.sociales.socialGoogle }}</p>
+
+			{% if "https" in instance.sociales.socialFacebook %}
+				<a href="{{ instance.sociales.socialFacebook }}"><img class="img-enl" src="{% static 'iconos/Facebook.png'%}"></a>
+			{% else %}
+				<img class="img-enl" src="{% static 'iconos/noFacebook.png'%}">
+			{% endif%}
+			{% if "https" in instance.sociales.socialTwiter %}
+				<a href="{{ instance.sociales.socialTwiter }}"><img class="img-enl" src="{% static 'iconos/Twitter.png'%}"></a>
+			{% else %}
+				<img class="img-enl" src="{% static 'iconos/noTwitter.png'%}">
+			{% endif %}
+			{% if "https" in instance.sociales.socialYoutube %}
+				<a href="{{ instance.sociales.socialYoutube }}"><img class="img-enl" src="{% static 'iconos/Youtube.png'%}"></a>
+			{% else %}
+				<img class="img-enl" src="{% static 'iconos/noYoutube.png'%}">
+			{% endif %}
+			{% if "https" in instance.sociales.socialLinkedin %}
+				<a href="{{ instance.sociales.socialLinkedin }}"><img class="img-enl" src="{% static 'iconos/Linkedin.png'%}"></a>
+			{% else %}
+				<img class="img-enl" src="{% static 'iconos/noLinkedin.png'%}">
+			{% endif %}
+			{% if "https" in instance.sociales.socialGoogle %}
+				<a href="{{ instance.sociales.socialGoogle }}"><img class="img-enl" src="{% static 'iconos/Google.png'%}"></a>
+			{% else %}
+				<img class="img-enl" src="{% static 'iconos/noGoogle.png'%}">
+			{% endif %}
 		</div>
 	</div>
 	<div class="section-list-novedad">

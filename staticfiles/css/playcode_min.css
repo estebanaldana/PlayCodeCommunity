@@ -30,9 +30,19 @@
 }
 
 .content-footer{
+	margin-top: 29px;
 	width: 45%;
 	float: left;
 	text-align: center;
+}
+
+.border-img-footer {
+	margin-left: -32px;
+	margin-top: 6px;
+	background-color: white;
+    border-radius: 30px;
+    width: 55px;
+    height: 55px;
 }
 
 .center-contents{
@@ -84,17 +94,32 @@
 /* footer */
 
 
-.pie{
+.pie {
 	margin-top: 15%;
 	width: 90%;
 	margin-left: 5%;
 	margin-right: 5%;
 }
 
-.sociales{
+.color-footer {
+	position: absolute; 
+	width: 100%; height: 202px; 
+	background-color: black; 
+	margin-left: -64px;
+}
+
+.sociales {
 	margin-top: 15%;
 	float: right;
 	margin-right: 15%;
+}
+
+.footer-politic{
+	position: absolute;
+    margin-left: 35%;
+    margin-top: 3%;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 
@@ -217,6 +242,118 @@
 
 }
 
+.processbuttonfacebook .bar1{
+	background-color: #333;
+  	margin: 6px 0;
+  	transition: 0.4s;
+	visibility: visible;
+	-webkit-transform: rotate(-45deg) translate(-2px, 3px);
+  	transform: rotate(-45deg) translate(-2px, 3px);
+}
+
+.processbuttonfacebook .bar2{
+  	background-color: #333;
+  	margin: 6px 0;
+  	transition: 0.4s;
+	visibility: visible;
+	-webkit-transform: rotate(45deg) translate(-4px, -6px);
+  	transform: rotate(45deg) translate(-4px, -6px);
+}
+
+.processbuttonfacebook .iconbuttonfacebook{
+	visibility: hidden;
+}
+
+.processbuttontwitter .bar1{
+	background-color: #333;
+  	margin: 6px 0;
+  	transition: 0.4s;
+	visibility: visible;
+	-webkit-transform: rotate(-45deg) translate(-2px, 3px);
+  	transform: rotate(-45deg) translate(-2px, 3px);
+}
+
+.processbuttontwitter .bar2{
+  	background-color: #333;
+  	margin: 6px 0;
+  	transition: 0.4s;
+	visibility: visible;
+	-webkit-transform: rotate(45deg) translate(-4px, -6px);
+  	transform: rotate(45deg) translate(-4px, -6px);
+}
+
+.processbuttontwitter .iconbuttontwitter{
+	visibility: hidden;
+}
+
+.processbuttongoogle .bar1{
+	background-color: #333;
+  	margin: 6px 0;
+  	transition: 0.4s;
+	visibility: visible;
+	-webkit-transform: rotate(-45deg) translate(-2px, 3px);
+  	transform: rotate(-45deg) translate(-2px, 3px);
+}
+
+.processbuttongoogle .bar2{
+  	background-color: #333;
+  	margin: 6px 0;
+  	transition: 0.4s;
+	visibility: visible;
+	-webkit-transform: rotate(45deg) translate(-4px, -6px);
+  	transform: rotate(45deg) translate(-4px, -6px);
+}
+
+.processbuttongoogle .iconbuttongoogle{
+	visibility: hidden;
+}
+
+.processbuttonyoutube .bar1{
+	background-color: #333;
+  	margin: 6px 0;
+  	transition: 0.4s;
+	visibility: visible;
+	-webkit-transform: rotate(-45deg) translate(-2px, 3px);
+  	transform: rotate(-45deg) translate(-2px, 3px);
+}
+
+.processbuttonyoutube .bar2{
+  	background-color: #333;
+  	margin: 6px 0;
+  	transition: 0.4s;
+	visibility: visible;
+	-webkit-transform: rotate(45deg) translate(-4px, -6px);
+  	transform: rotate(45deg) translate(-4px, -6px);
+}
+
+.processbuttonyoutube .iconbuttonyoutube{
+	visibility: hidden;
+}
+
+.processbuttonlinkedin .bar1{
+	background-color: #333;
+  	margin: 6px 0;
+  	transition: 0.4s;
+	visibility: visible;
+	-webkit-transform: rotate(-45deg) translate(-2px, 3px);
+  	transform: rotate(-45deg) translate(-2px, 3px);
+}
+
+.processbuttonlinkedin .bar2{
+  	background-color: #333;
+  	margin: 6px 0;
+  	transition: 0.4s;
+	visibility: visible;
+	-webkit-transform: rotate(45deg) translate(-4px, -6px);
+  	transform: rotate(45deg) translate(-4px, -6px);
+}
+
+.processbuttonlinkedin .iconbuttonlinkedin{
+	visibility: hidden;
+}
+
+
+
 /* button reveal */
 
 .btn-small{
@@ -256,6 +393,10 @@
 .a-index{
 	font-size: 20px;
 	margin-top: -8px;
+}
+
+.a-infofile{
+	font-size: 34px;
 }
 
 /* field's */
@@ -360,6 +501,35 @@ img{
 	font-size: 20px;
 }
 
+.spaceshowimage{
+	width: 100%
+	height: auto;
+	margin-left: -40%;
+}
+
+.spaceiconbutton{
+	width: auto;
+    height: auto;
+    display: contents;
+}
+
+
+.iconbutton{
+	float: left;
+    margin-left: 36px;
+}
+
+.spacebar{
+	float: inherit;
+}
+
+.spaceicon{
+	float: inherit;
+}
+
+.spacecontenturlsociales{
+	margin-top: 95px;
+}
 
 
 
@@ -387,7 +557,7 @@ img{
 }
 
 .img-enl{
-	max-width: 40px;
+	max-width: 20px;
 }
 
 .img-footer{
@@ -395,10 +565,16 @@ img{
 }
 
 .img-footer-icon{
-	max-width: 50px;
+	max-width: 59px;
+    margin-top: 8px;
+    margin-left: -2px;
 }
 
-
+.showimage{
+	max-width: 300px;
+	max-height: 500px;
+	margin-left: 36%;
+}
 
 /* perfil */
 
@@ -435,11 +611,51 @@ img{
 	font-family: arial-black;
 }
 
+.iconbuttonfacebook{
+	width: 25px;
+    height: 25px;
+    background: url(../iconos/Facebook.png) no-repeat center;
+    background-size: contain;
+}
+
+.iconbuttontwitter{
+	width: 25px;
+    height: 25px;
+    background: url(../iconos/Twitter.png) no-repeat center;
+    background-size: contain;
+}
+
+.iconbuttongoogle{
+	width: 25px;
+    height: 25px;
+    background: url(../iconos/Google.png) no-repeat center;
+    background-size: contain;
+}
+
+.iconbuttonyoutube{
+	width: 25px;
+    height: 25px;
+    background: url(../iconos/Youtube.png) no-repeat center;
+    background-size: contain;
+}
+
+.iconbuttonlinkedin{
+	width: 25px;
+    height: 25px;
+    background: url(../iconos/Linkedin.png) no-repeat center;
+    background-size: contain;
+}
 
 
 
 
 
+/*bars seccion*/
+.bar1, .bar2 {
+	visibility: hidden;
+  	width: 25px;
+  	height: 5px;
+}
 
 /* seccion recover user*/
 .pass_done{

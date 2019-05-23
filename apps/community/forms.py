@@ -23,6 +23,6 @@ class ComForm(forms.ModelForm):
 
 		widgets={
 			'title': forms.TextInput(attrs={'class':'validate', 'autocomplete':'off'}),
-			'image': forms.FileInput(attrs={'required':'True' , 'type':'file' , 'name':'comimg', 'accept':'image/jpeg,image/png'}),
+			'image': forms.FileInput(attrs={'required':'True' , 'type':'file' , 'onchange':'previewFile()', 'accept':'image/jpeg,image/png'}),
 			'description': forms.Textarea(attrs={'class':'materialize-textarea' , 'data-length':'1000', 'title':'Maximo deves de colocar 50 caracteres'}),
 		}

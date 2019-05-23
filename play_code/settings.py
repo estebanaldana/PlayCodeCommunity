@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dropbox
 from django.core.urlresolvers import reverse_lazy
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,13 +21,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['playcode.herokuapp.com','localhost','127.0.0.1']
 ALLOWED_HOSTS = ['playcode.herokuapp.com', 'www.playcode.com', '.playcode.com', 'localhost', '127.0.0.1']
 
 # Application definition
@@ -44,6 +42,7 @@ INSTALLED_APPS = [
     'apps.user',
     'apps.index',
     'apps.community',
+    'apps.processes',
     'rest_framework',
 ]
 
@@ -147,11 +146,9 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-# Storange Dropbox
+MEDIA_ROOT = os.path.join(os.path.expanduser("~"), "pccomunnity")
 
-MEDIA_URL = ''
-
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorange'
+MEDIA_URL = '/media_playcode/'
 
 # Login
 
@@ -168,3 +165,7 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = os.environ['HOST_USER_EMAIL']
 EMAIL_HOST_PASSWORD = os.environ['HOST_USER_PASSWORD']
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Storange Dropbox
+
+DBXCLIENT = dropbox.Dropbox(os.environ['DROPBOX'])

@@ -51,24 +51,25 @@
 			</p>
 
 			<p class="p-developer">{{ instance.developer|upper }}</p>
-			{% if "https" in instanceS.socialFacebook %}
-			<a href="{{ instanceS.socialFacebook }}"><img class="img-enl" src="{% static 'iconos/Facebook.png'%}"></a>
+			
+			{% if "https" in instance.sociales.socialFacebook %}
+			<a href="{{ instance.sociales.socialFacebook }}"><img class="img-enl" src="{% static 'iconos/Facebook.png'%}"></a>
 			{% else %}
 			{% endif %}
-			{% if "https" in instanceS.socialTwiter %}
-			<a href="{{ instanceS.socialTwiter }}"><img class="img-enl" src="{% static 'iconos/Twitter.png'%}"></a>
+			{% if "https" in instance.sociales.socialTwiter %}
+			<a href="{{ instance.sociales.socialTwiter }}"><img class="img-enl" src="{% static 'iconos/Twitter.png'%}"></a>
 			{% else %}
 			{% endif %}
-			{% if "https" in instanceS.socialYoutube %}
-			<a href="{{ instanceS.socialYoutube }}"><img class="img-enl" src="{% static 'iconos/Youtube.png'%}"></a>
+			{% if "https" in instance.sociales.socialYoutube %}
+			<a href="{{ instance.sociales.socialYoutube }}"><img class="img-enl" src="{% static 'iconos/Youtube.png'%}"></a>
 			{% else %}
 			{% endif %}
-			{% if "https" in instanceS.socialLinkedin %}
-			<a href="{{ instanceS.socialLinkedin }}"><img class="img-enl" src="{% static 'iconos/Linkedin.png'%}"></a>
+			{% if "https" in instance.sociales.socialLinkedin %}
+			<a href="{{ instance.sociales.socialLinkedin }}"><img class="img-enl" src="{% static 'iconos/Linkedin.png'%}"></a>
 			{% else %}
 			{% endif %}
-			{% if "https" in instanceS.socialGoogle %}
-			<a href="{{ instanceS.socialGoogle }}"><img class="img-enl" src="{% static 'iconos/Google.png'%}"></a>
+			{% if "https" in instance.sociales.socialGoogle %}
+			<a href="{{ instance.sociales.socialGoogle }}"><img class="img-enl" src="{% static 'iconos/Google.png'%}"></a>
 			{% else %}
 			{% endif %}
 		</div>

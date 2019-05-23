@@ -26,7 +26,7 @@ class ProyForm(forms.ModelForm):
 
 		widgets={
 			'title': forms.TextInput(attrs={'class':'validate', 'autocomplete':'off'}),
-			'image': forms.FileInput(attrs={'accept':'image/jpeg,image/png', 'required':'True'}),
+			'image': forms.FileInput(attrs={'onchange':'previewFile()', 'accept':'image/jpeg,image/png', 'required':'True'}),
 			'product': forms.FileInput(attrs={'accept':'.rar, .zip', 'required':'True'}),
 			'description': forms.Textarea(attrs={'class':'materialize-textarea' , 'data-length':'1000', 'title':'Maximo deves de colocar 50 caracteres'}),
 			'developer':  forms.TextInput(attrs={'class':'validate', 'autocomplete':'off'}),

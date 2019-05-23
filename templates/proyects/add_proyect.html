@@ -15,8 +15,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- javascript playcode -->
+<script type="text/javascript" src="{% static 'javascript/playcode_min.js' %}"></script>
 {% endblock %}
-
 {% block toggle %}
 <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -91,9 +92,9 @@
       			</div>
       	</div>
       	<div class="row">
-      		<div class="file-path-wrapper">
-         		<input class="file-path validate" type="text" placeholder="Selecciona una Imagen">
-      		</div>
+      		<div class="spaceshowimage">
+            <img class="showimage" src="">
+          </div>
     		</div>
     	</div>
 		</div>
@@ -134,28 +135,93 @@
 	<!-- Redes sociales -->
 		<ul class="collapsible" data-collapsible="accordion">
     		<li>
-      		<div class="collapsible-header"><i class="glyphicon glyphicon-globe"></i>Agregar Enlaces</div>
+      		<div class="collapsible-header"><i class="glyphicon glyphicon-globe"></i>Agregar Redes Sociales</div>
       		<div class="collapsible-body">
-      			<div class="input-field col s6">
-      				{{ form2.socialFacebook }}
-      				<label for="{{ form2.socialFacebook.name }}">{{ form2.socialFacebook.label }}</label>
-      			</div>
-      			<div class="input-field col s6">
-      				{{ form2.socialTwiter }}
-      				<label for="{{ form2.socialTwiter.name }}">{{ form2.socialTwiter.label }}</label>
-      			</div>
-      			<div class="input-field col s6">
-      				{{ form2.socialGoogle }}
-      				<label for="{{ form2.socialGoogle.name }}">{{ form2.socialGoogle.label }}</label>
-      			</div>
-      			<div class="input-field col s6">
-      				{{ form2.socialYoutube }}
-      				<label for="{{ form2.socialYoutube.name }}">{{ form2.socialYoutube.label }}</label>
-      			</div>
-      			<div class="input-field col s6">
-      				{{ form2.socialLinkedin }}
-      				<label for="{{ form2.socialLinkedin.name }}">{{ form2.socialLinkedin.label }}</label>
-      			</div>
+            <div class="spaceiconbutton">
+              <div class="iconbutton">
+                <!--button facebook-->
+                <div class="spacebar" onclick="socialbuttonfacebook(this)">
+                  <div class="spacebar">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                  </div>
+                  <div class="iconbuttonfacebook"></div>
+                </div>
+              </div>
+              <div class="iconbutton">
+                <!--button twitter-->
+                <div class="spacebar" onclick="socialbuttontwitter(this)">
+                  <div class="spacebar">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                  </div>
+                  <div class="iconbuttontwitter"></div>
+                </div>
+              </div>
+              <div class="iconbutton">
+                <!--button google+-->
+                <div class="spacebar" onclick="socialbuttongoogle(this)">
+                  <div class="spacebar">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                  </div>
+                  <div class="iconbuttongoogle"></div>
+                </div>
+              </div>
+              <div class="iconbutton">
+                <!--button youtube-->
+                <div class="spacebar" onclick="socialbuttonyoutube(this)">  
+                  <div class="spacebar">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                  </div>
+                  <div class="iconbuttonyoutube"></div>
+                </div>
+              </div>
+              <div class="iconbutton">
+                <!--button linkedin-->
+                <div class="spacebar" onclick="socialbuttonlinkedin(this)">
+                  <div class="spacebar">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                  </div>
+                  <div class="iconbuttonlinkedin"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="spacecontenturlsociales">
+              <div id="contenturlfacebook" style="opacity:0; display: none;">
+      		        <div class="input-field col s6">
+      		        {{ form2.socialFacebook }}
+      		        <label for="{{ form2.socialFacebook.name }}">{{ form2.socialFacebook.label }}</label>
+      		      </div>
+              </div>
+              <div id="contenturltwitter" style="opacity:0; display: none;">
+      		      <div class="input-field col s6">
+      		      	{{ form2.socialTwiter }}
+      		      	<label for="{{ form2.socialTwiter.name }}">{{ form2.socialTwiter.label }}</label>
+      		      </div>
+              </div>
+              <div id="contenturlgoogle" style="opacity:0; display: none;">
+      		      <div class="input-field col s6">
+      		      	{{ form2.socialGoogle }}
+      		      	<label for="{{ form2.socialGoogle.name }}">{{ form2.socialGoogle.label }}</label>
+      		      </div>
+              </div>
+              <div id="contenturlyoutube" style="opacity:0; display: none;">
+      		      <div class="input-field col s6">
+      		      	{{ form2.socialYoutube }}
+      		      	<label for="{{ form2.socialYoutube.name }}">{{ form2.socialYoutube.label }}</label>
+      		      </div>
+              </div>
+              <div id="contenturllinkedin" style="opacity:0; display: none;">
+      		      <div class="input-field col s6">
+      		      	{{ form2.socialLinkedin }}
+      		      	<label for="{{ form2.socialLinkedin.name }}">{{ form2.socialLinkedin.label }}</label>
+      		      </div>
+              </div>
+            </div>
       		</div>
     		</li>
   		</ul>

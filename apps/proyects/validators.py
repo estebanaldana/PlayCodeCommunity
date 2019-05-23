@@ -33,10 +33,10 @@ def valid_extension_project(value):
 
 		if project_url not in extecions_project:
 
-			raise ValidationError(_("El proyecto debe estar comprimido"), params={'value':value},)
+			raise ValidationError(_("El proyecto debe estar comprimido - tu archivo debe tener un nombre correcto y sin caracteres especiales"), params={'value':value},)
 	
 	else:
-		raise ValidationError(_("tu imagen no contiene una extencion"), params={'value':value},)
+		raise ValidationError(_("tu archivo no contiene una extencion"), params={'value':value},)
 	
 	return value
 
@@ -51,7 +51,7 @@ def valid_extension_social_facebook(value):
 
 		if sociales_names not in url_social:
 			print('Error name')
-			raise ValidationError(_("la url no pertenece a la red social: %(value)s"), params={'value':value})
+			raise ValidationError(_("la url no pertenece a la red social: %(value)s"), params={'value':value},)
 		else:
 			try:
 				my_url(value)
@@ -73,7 +73,7 @@ def valid_extension_social_twitter(value):
 		if sociales_names not in url_social:
 
 			print('Error name')
-			raise ValidationError(_("la url no pertenece a la red social: %(value)s"), params={'value':value})
+			raise ValidationError(_("la url no pertenece a la red social: %(value)s"), params={'value':value},)
 		else:
 			try:
 				my_url(value)
@@ -95,7 +95,7 @@ def valid_extension_social_google(value):
 
 		if sociales_names not in url_social:
 			print('Error name')
-			raise ValidationError(_("la url no pertenece a la red social: %(value)s"), params={'value':value})
+			raise ValidationError(_("la url no pertenece a la red social: %(value)s"), params={'value':value},)
 		else:
 			try:
 				my_url(value)
@@ -116,7 +116,7 @@ def valid_extension_social_youtube(value):
 
 		if sociales_names not in url_social:
 			print('Error name')
-			raise ValidationError(_("la url no pertenece a la red social: %(value)s"), params={'value':value})
+			raise ValidationError(_("la url no pertenece a la red social: %(value)s"), params={'value':value},)
 		else:
 			try:
 				my_url(value)
@@ -137,7 +137,7 @@ def valid_extension_social_linkedin(value):
 
 		if sociales_names not in url_social:
 			print('Error name')
-			raise ValidationError(_("la url no pertenece a la red social: %(value)s"), params={'value':value})
+			raise ValidationError(_("la url no pertenece a la red social: %(value)s"), params={'value':value},)
 		else:
 			try:
 				my_url(value)

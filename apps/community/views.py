@@ -1,5 +1,5 @@
 import os
-import dropbox
+import shutil
 from dropbox.exceptions import ApiError
 from django.contrib import messages
 from django.core import signing
@@ -13,12 +13,12 @@ from django.contrib import messages
 from django.conf import settings
 from PIL import Image
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.files.storage import FileSystemStorage
 
 from apps.community.models import Community
 from apps.user.models import limitCommunity
 from apps.community.forms import ComForm
-
-dbxClient = dropbox.Dropbox(os.environ['DROPBOX'])
+from apps.processes import findimage
 
 
 class CreateCommunity(CreateView):
@@ -39,6 +39,11 @@ class CreateCommunity(CreateView):
 		return context
 
 	def post(self, request, *args, **kwargs):
+		#directory temfile
+		try:
+			os.stat(os.path.join(os.path.expanduser("~"), "pccomunnity"))
+		except:
+			os.mkdir(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 		self.object = self.get_object
 		form = self.form_class(request.POST or None, request.FILES or None)
 		limit = limitCommunity.objects.get(user=self.request.user.id)
@@ -49,23 +54,15 @@ class CreateCommunity(CreateView):
 				#request.File.image
 				request_image = str(request.FILES.get('image'))
 
-				res_file_image = ''
-				#System Unix 
-				UnidadDIR = os.path.expanduser("~")
-				#System Windosw
-				UnidadDIRW = os.path.expanduser("home")
+				myFile = request.FILES.get('image')
+				fs = FileSystemStorage()
+				filename = fs.save(myFile.name, myFile)
 
-				if(not os.path.isdir(UnidadDIR)):
-					return UnidadDIR
+				res_file_image = findimage.resFileImage(request_image)
 
-				for root, dir, file in os.walk(UnidadDIR):
-					for name in file:
-						if(request_image in name):
-							res_file_image = os.path.join(root,name)
-							break
+				back_file_image = findimage.renameFile(request.user.username,request_image,"community")
 
 				result_image = str(res_file_image)
-				back_file_image = str("play_code_community_"+request.user.username+"_"+request_image)
 				username = str(request.user)
 
 				_file_size_image = os.path.getsize(res_file_image)
@@ -79,22 +76,27 @@ class CreateCommunity(CreateView):
 					if _file_size_image <= CHUCK_SIZE_IMAGE:
 						if not result_image == " ":
 							with open(result_image, "rb") as f:
-								dbxClient.files_upload(f.read(), '/imagenes_playcode/'+username+'/'+'community'+'/'+back_file_image)
+								settings.DBXCLIENT.files_upload(f.read(), '/imagenes_playcode/'+username+'/'+'community'+'/'+back_file_image)
+								shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 						else:
 							messages.error(request, 'lo sentimos el arcivo no existe o la validacion fue incorrecta')
+							shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 							return self.render_to_response(self.get_context_data(form=form))
 
 						try:
-							community.image = dbxClient.sharing_create_shared_link_with_settings('/imagenes_playcode/'+username+'/'+'community'+'/'+back_file_image).url
+							community.image = settings.DBXCLIENT.sharing_create_shared_link_with_settings('/imagenes_playcode/'+username+'/'+'community'+'/'+back_file_image).url
 						except ApiError as err:
 							if err.error.is_shared_link_already_exists():
-								messages.error(request, 'Esta imagen ya existe en tus proyectos')
+								messages.error(request, 'Esta nombre de imagen ya existe en tus proyectos')
+								shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 								return self.render_to_response(self.get_context_data(form=form))
 					else:
 						messages.error(request, 'Lo sentimos la Imagen es muy grande, (tamaño de la imagen: menos de 4MB)')
+						shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 						return self.render_to_response(self.get_context_data(form=form))
 				else:
 					messages.error(request, 'Upps la imagen debe ser mayor a 1200 x 1200')
+					shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 					return self.render_to_response(self.get_context_data(form=form))
 
 				contentLimit = limitCommunity.objects.get(user=request.user.id) 
@@ -103,8 +105,10 @@ class CreateCommunity(CreateView):
 				community.save()
 				return HttpResponseRedirect(self.get_success_url())
 			else:
+				shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 				return self.render_to_response(self.get_context_data(form=form))
 		else:
+			shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 			return redirect('lc') 
 
 
