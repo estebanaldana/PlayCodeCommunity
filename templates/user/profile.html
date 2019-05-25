@@ -34,23 +34,6 @@
 	<li>
 		<a class="a-index" href="{% url 'playcode/index' %}">Inicio</a>
 	</li>
-
-{% if user.is_authenticated %}
-	<li class="dropdown">
-		<a class="a-index" href="{{ user.username }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ user.username }} <span class="caret"></span></a>
-		<ul class="dropdown-menu dropdown-menu-name-user">
-			<li class="active"><a class="a-dropdown">Perfil</a></li>
-			<li><a class="a-dropdown" href="{% url 'you_community' %}">Tu comunidad</a></li>
-			<li><a class="a-dropdown" href="{% url 'you_proyect' %}">Tus Proyectos</a></li>
-			<li role="separator" class="divider"></li>
-			<li><a class="a-dropdown" href="{% url 'logout' %}">Cerrar Sesion</a></li>
-		</ul>
-    
-	</li>
-        		
-{% else %}
-	<li><a>Error</a></li>
-{% endif %}
 </ul>
 {% endblock %}
 
@@ -90,7 +73,7 @@
 
 <br>
 
-<div style="width: 200%; margin-top: 150px;">
+<div style="width: 100%; margin-top: 150px;">
 	<div class="row">
 		<div class="input-field col s6">
 			<div class="content-btn-forms">

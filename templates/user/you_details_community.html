@@ -14,14 +14,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 {% endblock %}
 
-{% block logo %}
-<ul class="nav navbar-nav" >
-	<li>
-		<a href="{% url 'playcode/index'%}" class="navbar-index">Inicio</a>
-	</li>
-</ul>
+{% block toggle %}
 {% endblock %}
+
+{% block logo %}
+<ul class="nav navbar-nav">
+	<li>
+		<a class="a-index" href="{% url 'playcode/index' %}">Inicio</a>
+	</li>
+{% endblock %}
+
 {% block search %}
+{% endblock %}
+{% block head-page%}
+{% endblock %}
+{% block head-page2 %}
+{% endblock %}
+{% block enlproy%} 
+{% endblock %}
+{% block enlcom %}
+{% endblock %}
+
+{% block sesion %}
 {% endblock %}
 
 
