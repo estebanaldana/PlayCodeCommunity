@@ -137,11 +137,11 @@ class CreateProyect(CreateView):
 					messages.error(request, 'lo sentimos el tamaño del la imagen o el proyecto es muy grande, (tamaño de la imagen: menor a 4MB) (tamaño del proyecto: menos de 30MB)')
 					shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 					return self.render_to_response(self.get_context_data(form=form, form2=form2))
+				proyecto.sociales = form2.save()
+				proyecto.save()
 				contentLimit = limitProject.objects.get(user=request.user.id) 
 				content = int(contentLimit.limitContent) + 1;
 				limitProject.objects.filter(user=request.user).update(limitContent=str(content))
-				proyecto.sociales = form2.save()
-				proyecto.save()
 				return HttpResponseRedirect(self.get_success_url())
 			else:
 				shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))

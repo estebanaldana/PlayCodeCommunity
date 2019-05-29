@@ -98,11 +98,10 @@ class CreateCommunity(CreateView):
 					messages.error(request, 'Upps la imagen debe ser mayor a 1200 x 1200')
 					shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 					return self.render_to_response(self.get_context_data(form=form))
-
+				community.save()
 				contentLimit = limitCommunity.objects.get(user=request.user.id) 
 				content = int(contentLimit.limitContent) + 1;
 				limitCommunity.objects.filter(user=request.user).update(limitContent=str(content))		
-				community.save()
 				return HttpResponseRedirect(self.get_success_url())
 			else:
 				shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
