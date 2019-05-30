@@ -1721,6 +1721,16 @@ img{
     width: 250px;
 	}
 
+	/*tables*/
+	table {
+    width: 90%;
+	}
+
+	td{
+    	width: 83%;
+    	float: left;
+	}
+
 	/* ul */
 	.collapsible {
     width: 85%;
@@ -1961,6 +1971,16 @@ img{
 		margin-left: 5%;
 	}
 
+	/*tables*/
+	table {
+    width: 90%;
+	}
+
+	td{
+    	width: 83%;
+    	float: left;
+	}
+
 	/* row */
 	.row{
     	margin-right: 0px;
@@ -2112,17 +2132,13 @@ img{
 
 	.navbar-default .navbar-nav>li>a{
 		float: left;
-		width: 21%;
+		width: 123%;
 	}
 
 	.navbar-nav .open .dropdown-menu {
     	margin-right: -15px;
     	float: left;
     	width: 100%;
-	}
-
-	.nav>li {
-    	width: 22%
 	}
 
 	/*head*/
@@ -2267,6 +2283,16 @@ img{
 	.btn-small {
     	margin-left: 145%;
     	margin-top: -85%;
+	}
+
+	/*tables*/
+	table {
+    width: 90%;
+	}
+
+	td{
+    	width: 83%;
+    	float: left;
 	}
 
 	/*Footer*/
