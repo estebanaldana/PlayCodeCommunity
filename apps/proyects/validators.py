@@ -7,38 +7,42 @@ my_url =  URLValidator()
 
 def valid_extension_image(value):
 
-	if "." in value:
+	valueLower = value.lower()
 
-		image_url = value.split('.')[1]
+	if "." in valueLower:
 
-		extecions_image = ["*"]
+		image_url = valueLower.split('.')[1]
+
+		extecions_image = ["jpg", "png", "jpeg", "heif", "hevc"]
 
 		if image_url not in extecions_image:
-			raise ValidationError(_("Esta imagen tiene una extencion incorrecta "), params={'value':value},)
+			raise ValidationError(_("Esta imagen tiene una extencion incorrecta "), params={'valueLower':valueLower},)
 
 	else:
-		raise ValidationError(_("tu imagen no contiene una extencion"), params={'value':value},)
+		raise ValidationError(_("tu imagen no contiene una extencion"), params={'valueLower':valueLower},)
 	
-	return value
+	return valueLower
 	
 
 
 def valid_extension_project(value):
-	
-	if "." in value:
 
-		project_url = value.split('.')[1]
+	valueLower = value.lower()
+	
+	if "." in valueLower:
+
+		project_url = valueLower.split('.')[1]
 
 		extecions_project=["zip","rar"]
 
 		if project_url not in extecions_project:
 
-			raise ValidationError(_("El proyecto debe estar comprimido - tu archivo debe tener un nombre correcto y sin caracteres especiales"), params={'value':value},)
+			raise ValidationError(_("El proyecto debe estar comprimido - tu archivo debe tener un nombre correcto y sin caracteres especiales"), params={'valueLower':valueLower},)
 	
 	else:
-		raise ValidationError(_("tu archivo no contiene una extencion"), params={'value':value},)
+		raise ValidationError(_("tu archivo no contiene una extencion"), params={'valueLower':valueLower},)
 	
-	return value
+	return valueLower
 
 
 def valid_extension_social_facebook(value):
