@@ -7,7 +7,7 @@ def valid_extension_image(value):
 
 		image_url = value.split('.')[1]
 
-		extecions_image = ["jpg", "png", "jpeg"]
+		extecions_image = ["*"]
 
 		if image_url not in extecions_image:
 			raise ValidationError(_("Esta imagen tiene una extencion incorrecta "), params={'value':value},)

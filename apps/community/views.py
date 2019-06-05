@@ -88,7 +88,6 @@ class CreateCommunity(CreateView):
 						except ApiError as err:
 							if err.error.is_shared_link_already_exists():
 								messages.error(request, 'Esta nombre de imagen ya existe en tus proyectos')
-								shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 								return self.render_to_response(self.get_context_data(form=form))
 					else:
 						messages.error(request, 'Lo sentimos la Imagen es muy grande, (tamaño de la imagen: menos de 4MB)')
