@@ -130,7 +130,6 @@ class CreateProyect(CreateView):
 					except ApiError as err:
 						if err.error.is_shared_link_already_exists():
 							messages.error(request, 'Este proyecto ya existe en tus proyectos')
-							shutil.rmtree(os.path.join(os.path.expanduser("~"), "pccomunnity"))
 							return self.render_to_response(self.get_context_data(form=form, form2=form2))
 				else:
 					messages.error(request, 'lo sentimos el tamaño del la imagen o el proyecto es muy grande, (tamaño de la imagen: menor a 4MB) (tamaño del proyecto: menos de 30MB)')
